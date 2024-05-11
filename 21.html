@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>母親節快樂</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #ffe5d9;
+            text-align: center;
+            overflow: hidden;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            background-image: url('https://www.example.com/soft-background.jpg'); /* 替換成你的背景圖片網址 */
+            background-size: cover;
+        }
+        .fade-in-out {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            color: #db7093;
+            opacity: 0;
+            transition: opacity 5s;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100px); opacity: 0; }
+            60% { opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        .effect {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-size: cover;
+            animation: fall 10s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="fade-in-out" id="greeting">母親節快樂</div>
+    <div class="fade-in-out" id="message" style="display:none;">媽咪，謝謝你這20年來含辛茹苦照顧我長大，我愛您!!!</div>
+    <script>
+        // Function to create falling petals and hearts
+        function createFallingEffect(imageURL, total, delayMultiplier) {
+            for (let i = 0; i < total; i++) {
+                let effect = document.createElement('div');
+                effect.className = 'effect';
+                effect.style.backgroundImage = `url('${imageURL}')`;
+                effect.style.left = Math.random() * innerWidth + 'px';
+                effect.style.animationDelay = `${Math.random() * delayMultiplier}s`;
+                document.body.appendChild(effect);
+            }
+        }
+
+        // Create petals and hearts
+        createFallingEffect('https://www.example.com/petal.png', 50, 5); // Replace with your petal image URL
+        createFallingEffect('https://www.example.com/heart.png', 30, 8); // Replace with your heart image URL
+
+        // Handle the greeting and message display
+        setTimeout(() => {
+            document.getElementById('greeting').style.opacity = 1;
+        }, 1000);
+
+        setTimeout(() => {
+            document.getElementById('greeting').style.opacity = 0;
+        }, 8000);
+
+        setTimeout(() => {
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('message').style.opacity = 1;
+        }, 9000);
+
+        setTimeout(() => {
+            document.getElementById('message').style.opacity = 0;
+        }, 18000);
+    </script>
+</body>
+</html>
